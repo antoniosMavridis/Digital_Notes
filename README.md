@@ -85,3 +85,57 @@ curl -X POST localhost:5000/createNote -d
 ```
 NOTE A third TITLE was added to database.
 ```
+### Entrypoint: /searchNote
+Μέσω αυτού του enrtypoint ο χρήστης μπορεί να αναζητά μια σημείωση με βάση τον τίτλο της. Η παραπάνω διαδιακασία πραγματοποιείται με την:
+```
+@app.route('/searchNote', methods=['POST'])
+``` 
+Η αναζήτηση της σημείωσης μπορεί να πραγματοποιηθεί ως εξής:
+``` 
+curl -X POST localhost:5000/searchNote -d '{"title":"A TITLE"}' 
+-H Content-Type:application/json -H "Authorization: f022c7a1-efac-11ec-bfc5-b42e99f51343"
+``` 
+Στην περίπτωση που υπάρχει η σημειώση, επιστρέφονται τα δεδομένα της στον χρήστη. Στην συγκεκριμένη περίπτωση επιστρέφεται:
+``` 
+[
+    {
+        "title": "A TITLE",
+        "text": "this is a note",
+        "words": "test"
+    }
+]
+``` 
+ Τα αποτελέσματα που μπορούν να επιστραφούν στον χρήστη μπορεί να είναι από ένα ή και περισσότερα ή και κανένα. 
+
+### Entrypoint: /searchWord
+Μέσω αυτού του enrtypoint ο χρήστης μπορεί να αναζητά μια σημείωση με βάση λέξης κλειδίου. Η παραπάνω διαδιακασία πραγματοποιείται με την:
+```
+@app.route('/searchWord', methods=['POST'])
+``` 
+Η αναζήτηση της σημείωσης μπορεί να πραγματοποιηθεί ως εξής:
+``` 
+curl -X POST localhost:5000/searchNote -d '{"title":"A TITLE"}' 
+-H Content-Type:application/json -H "Authorization: f022c7a1-efac-11ec-bfc5-b42e99f51343"
+``` 
+Στην περίπτωση που υπάρχει σε κάποια σημείωση η λέξη κλειδί επίστρεφεται στον χρήστη η αντίστοιχη σημείωση. Εάν υπάρχουν παραπάνω από μια σημειώσεις στην βάση τότε επιστρέφονται ανάλογα με την ημερομηνία της δημιουργίας τους. Στην συγκεκριμένη περίπτωση επιστρέφεται:
+``` 
+[
+    {
+        "title": "A TITLE",
+        "text": "this is a note",
+        "words": "test"
+    },
+    {
+        "title": "A second TITLE",
+        "text": "this is another note",
+        "words": "test2"
+    },
+    {
+        "title": "A third TITLE",
+        "text": "this is another  one  note",
+        "words": "test3"
+    }
+]
+
+``` 
+Τα αποτελέσματα που μπορούν να επιστραφούν στον χρήστη μπορεί να είναι από ένα ή και περισσότερα ή και κανένα. 
