@@ -47,3 +47,41 @@ curl -X POST localhost:5000/login -d
 Userid for user ant : f022c7a1-efac-11ec-bfc5-b42e99f51343
 ```
 Για όλα τα παρακάτω endpoints απαιτείται η σύνδεση του χρήστη στο σύστημα. Για κάθε curl, εντολή εκτέλεσης, ο χρήστης δίνει τον κωδικό αυθεντικοποίησης του στο header. Ο κωδικός ελέγχεται με τη συνάρτηση is_session_valid() και αν δεν είναι έγκυρος επιστρέφεται κατάλληλο μήνυμα με status 401.
+
+### Entrypoint: /createNote
+Μέσω αυτού του enrtypoint ο χρήστης μπορεί να δημιουργήσει μια νέα σημείωση η οποία θα αποτελείται από έναν τίτλο, το κείμενο αναφοράς και λέξεις κλειδία. Η παραπάνω διαδιακασία πραγματοποιείται με την:
+```
+@app.route('/createNote', methods=['POST'])
+``` 
+ Οι παραπάνω πληροφορίες εισάγονται από το χρήστη, ενώ αποθηκεύεται αυτόματα και η ημερομηνία δημιουργίας για την εκάστοτε σημείωση ως εξής:
+```
+d1 = today.strftime("%d/%m/%Y")
+data['date']=d1
+ ```
+Για την ειασωγή μιας σημειώσης στο σύστημα χρησιμοποιούμε την εξής εντολή:
+ ```
+curl -X POST localhost:5000/createNote -d 
+'{"title":"A TITLE","text":"thi,"words":"test"}' 
+-H Content-Type:application/json -H "Authorization: f022c7a1-efac-11ec-bfc5-b42e99f51343"
+ ```
+Έπειτα από την επιτυχή εισαγωγή της σημείωσης εμφανίζεται το εξής μήνυμα στον χρήστη:
+ ```
+NOTE A TITLE was added to database.
+```
+Αντίστοιχα για λόγου χάρη του παραδείγματος θα προσθέσουμε άλλες δύο σημειώσεις ως εξής:
+```
+curl -X POST localhost:5000/createNote -d 
+'{"title":"A second TITLE","text":"this is another note","words":"test2"}' 
+-H Content-Type:application/json -H "Authorization: f022c7a1-efac-11ec-bfc5-b42e99f51343"
+```
+```
+NOTE A second TITLE was added to database.
+```
+```
+curl -X POST localhost:5000/createNote -d 
+'{"title":"A third TITLE","text":"this is a nother  one  note","words":"test3"}' 
+-H Content-Type:application/json -H "Authorization: f022c7a1-efac-11ec-bfc5-b42e99f51343"
+```
+```
+NOTE A third TITLE was added to database.
+```
