@@ -1,12 +1,15 @@
 # YpoxreotikiErgasia22_E18102_MAVRIDIS_ANTONIOS
 A Python application in Docker with Mongodb Database that simulates the GoogleKeep application.
 
-<img src="images/docker.png" width="1000" height="400" /> </br>
+<img src="images/docker.png" width="1000" height="550" /> </br>
 
-# DIGITAL NOTES
+# Digital Notes <img src="images/logo_Unipi.png" width="55" height="55" /> </br>
 
 ## Περιγραφή της Εφαρμογής
+Σκοπός της εφαρμογής αποτελεί η υλοποίηση μιας υπηρεσίας Digital Notes,
+δηλαδή μιας υπηρεσίας καταγραφής σημειώσεων, αντίστοιχη του Google Keep ή του Simplenote.
 
+## Web Service: Λειτουργίες Απλού Χρήστη
 
 ### Entrypoint: /createSimpleUser
 Με το συγκεκριμένο entrypoint γίνεται η εγγραφή ενός χρήστη στο σύστημα με το ονοματεπώνυμό του, το email του, το username του και ένα password. Γίνεται αναζήτηση του email που έδωσε ο χρήστης αν υπάρχει ήδη στη βάση, ως εγγρεγραμμένος και επίσης ελέγχεται και το username εάν κατέχεται από άλλον χρήστη, ώστε να ειδοποιηθεί με κατάλληλο μήνυμα. <p>
@@ -271,25 +274,34 @@ User with usename ant was deleted
 Παρακάτω παρουσιάζεται η διαγραφή ενός χρήστη:
 <img src="images/deleteAccount.PNG"  /> </br>
 
+## Containerization
 
-## Flask Container 
+### MongoDB Container
+Για την υλοποίηση του παρακάτω πληροφοριακού συστήματος σε Python χρησιμοποιήθηκε Flask server για την υλοποίηση του web service και MongoDB για την αποθήκευση δεδομένων.
+Αρχικά, δημιουργήθηκε ένα container της MongoDB με όνομα mongodb1 με την παρακάτω εντολή:
+```
+docker run -d -p 27017:27017 --name mong mongo:4.0.4
+```
+Η δημιουργία της βάσης δεδομένων και των collection της έγινε αυτόματα από τον python κώδικα
+<img src="images/connectToMongo.PNG"  /> </br>
+
+### Flask Container 
 Για το container του web service, αρχικά δημιουργήθγηκε ένα image για το αρχείο digitalNotes.py. Για να δημιουργήσουμε το image από το Dockerfile χρησιμοποιήθηκε η εντολή:
 
 ```
 docker build -t flask_image 
 ```
 
-## Dockerfile
+### Dockerfile
 
 Για το image του web service  εγκαταστάθηκαν τα απαραίτητα εργαλεία, python:3.9, flask, pymongo και uuid. Στην συνέχεια ορίζουμε την ερφαρμογή να χρησιμοποιεί την πορτα 5000, default port του flask, και την εκτέλεση του digitalNotes.py αρχείου με python.
 
 Έπειτα, δημιουργείται container, με όνομα flask, που συνδέεται με το παραπάνω image.
 
-## Containerization
-Για το τελικό στάδιο του containerization πρέπει να συνδεθούν τα containers του web service και του MongoDB. Για αυτό δημιουργήθηκε το αρχείο docker-compose.yml.
+
 
 ### Docker-Compose
-Στο docker-compose.yml, αρχικά, καθορίζονται τα δύο services, containers. Για το πρώτο service καθορίζεται το container που θα δημιουργθεί τοπικά στον χρήστη (mongodb11), το image στο οποίο θα βασίζεται (mongo), το port στο οποίο τρέχει (27017) και δίνονται τα αρχεία .json (data), ως backup. Για το δεύτερο service καθορίζεται η δημιουργία του container (flask), το image που θα χρησιμοποιεί, το port επικοινωνίας (5000) και η βάση του στο mongodb container, από όπου παίρνει δεδομένα.
+Για το τελικό στάδιο του containerization πρέπει να συνδεθούν τα containers του web service και του MongoDB. Για αυτό δημιουργήθηκε το αρχείο docker-compose.yml. Στο docker-compose.yml, αρχικά, καθορίζονται τα δύο services, containers. Για το πρώτο service καθορίζεται το container που θα δημιουργθεί τοπικά στον χρήστη (mongodb11), το image στο οποίο θα βασίζεται (mongo), το port στο οποίο τρέχει (27017) και δίνονται τα αρχεία .json (data), ως backup. Για το δεύτερο service καθορίζεται η δημιουργία του container (flask), το image που θα χρησιμοποιεί, το port επικοινωνίας (5000) και η βάση του στο mongodb container, από όπου παίρνει δεδομένα.
 
 Ο χρήστης μπορεί να τρέξει το web service με την ακόλουθη εντολή:
 ```
