@@ -282,8 +282,8 @@ User with usename ant was deleted
 ```
 docker run -d -p 27017:27017 --name mong mongo:4.0.4
 ```
-Η δημιουργία της βάσης δεδομένων και των collection της έγινε αυτόματα από τον python κώδικα
-<img src="images/connectToMongo.PNG"  /> </br>
+Η δημιουργία της βάσης δεδομένων και των collection της έγινε αυτόματα από τον python κώδικα: 
+<img src="images/connectToMongo.PNG"   /> </br>
 
 ### Flask Container 
 Για το container του web service, αρχικά δημιουργήθγηκε ένα image για το αρχείο digitalNotes.py. Για να δημιουργήσουμε το image από το Dockerfile χρησιμοποιήθηκε η εντολή:
