@@ -309,6 +309,31 @@ User with username antonis was assign admin.
 
 <img src="images/newpass.PNG"  /> </br>
 <img src="images/newpass2.PNG"  /> </br>
+
+### Entrypoint: /deleteUserAdm
+
+Μέσω αυτού του entrypoint ο διαχειριστής του συστήματος έχει την δυνατότητα να διαγράψει έναν χρήστη από το σύστημα. Στη περίπτωση που δεν βρεθεί ο χρήστης, εμφανίζεται ανάλογο μήνυμα. Η παραπάνω διαδιακασία πραγματοποιείται με την: 
+
+@app.route('/deleteUserAdm', methods=['POST'])
+
+Έστω ότι υπάρχει ένα απλός χρήστης στο σύστημα με τα παρακάτω credentials. Το είδος του χρήστη υποδηλώνεται από το πεδίο Category. 
+<img src="images/user2.PNG"  /> </br> 
+
+Έπειτα από την εκτέλεση της παρακάτω εντολή ο admin διαγράφει τον χρήστη από το σύστημα:
+
+```
+curl -X POST localhost:5000/deleteUserAdm -d '{"username":"mavridis","password":"pass"}' 
+-H Content-Type:application/json -H "Authorization: f9c0096e-f25b-11ec-ae15-0242ac130002"
+```
+Έπειτα από την επιτυχής διαγραφή του χρήστη εμφανίζεται το παρακάτω μήνυμα στον admin:
+```
+User with username mavridis was deleted.
+```
+<img src="images/delete.PNG"  /> </br> 
+
+Με την βοήθεια του εργαλείου MongoDB Compass παρατηρούμε την πλέον απουσία του διαγραμένου χρήστη. 
+<img src="images/mm.PNG"  /> </br> 
+
 ## Containerization
 
 ### MongoDB Container
