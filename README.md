@@ -205,7 +205,7 @@ UPDATED A second TITLE
 curl -X POST localhost:5000/deleteNote -d '{"title":"A TITLE"}' 
 -H Content-Type:application/json -H "Authorization: 8d83c516-f0e3-11ec-9df7-0242ac130003"
 ```
-Έπειτα από επιτυχή ενημέρωση του τίτλου επιστρέφεται στον χρήστη το εξής μήνυμα:
+Έπειτα από επιτυχής διαγραφή της σημείωσης επιστρέφεται στον χρήστη το εξής μήνυμα:
 ```
 Note with title A TITLE was deleted.
 ```
