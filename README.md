@@ -274,6 +274,41 @@ User with usename ant was deleted
 Παρακάτω παρουσιάζεται η διαγραφή ενός χρήστη:
 <img src="images/deleteAccount.PNG"  /> </br>
 
+
+## Web Service: Λειτουργίες Διαχειριστή (Admin User)
+
+### Entrypoint: /assignUserAdm
+Μέσω αυτού του entrypoint ο διαχειριστής του συστήματος έχει την δυνατότητα να εισάγει έναν νέο διαχειριστή στο σύστημα, απαραίτητη είναι η εισαγωγή του ονόματός του, του email του, καθώς και ένας κωδικός μίας χρήσης. Ο νέος χρήστης αυτός, όταν θα κάνει είσοδο για πρώτη φορά στο σύστημα, θα ζητείται αυτόματα και η αλλαγή του κωδικού
+του. Η παραπάνω διαδιακασία πραγματοποιείται με την: 
+```
+@app.route('/assignUserAdm', methods=['POST'])
+``` 
+Παρακάτω παρουσιάζεται τα credentials του διαχειρηστή του συστήματος μέσω του βοηθητικού εργαλείο MongoDB Compass 
+<img src="images/adminCredentials.PNG"  /> </br>
+
+Έστω ότι υπάρχει ένα απλός χρήστης στο σύστημα με τα παρακάτω credentials. Το είδος του χρήστη υποδηλώνεται από το πεδίο Category. 
+<img src="images/simpleUserCredentials.PNG"  /> </br> 
+
+Έπειτα από την εκτελέση του συγκεκριμένου entrypoint με την παρακάτω εντολή,ο χρήστης Admin αλλάζει τον χρήστη με username: antonis σε admin user. 
+
+``` 
+curl -X POST localhost:5000/assignUserAdm -d '{"username":"antonis"}' 
+-H Content-Type:application/json -H "Authorization:  f9c0096e-f25b-11ec-ae15-0242ac130002"
+``` 
+Έπειτα από επιτυχή αλαγή του τύπου του χρήστη εμφανίζεται:
+```
+User with username antonis was assign admin.
+```
+<img src="images/changeAdmin.PNG"  /> </br>
+
+Τα αποτελέσματα της νέας τροποποίησης μπορούμε να τα διακρίνουμε και μέσω του βοηθητικού εργαλείο MongoDB Compass. 
+
+<img src="images/adminNew.PNG"  /> </br>
+
+Παρατηρούμε ότι η κατηγορία του χρήστη από category: "simple user" έγινε category: "admin". Επίσης παρατηρούμε ότι το password του νέου admin έχει οριστεί αυτόματα ως password: "admnew". Το οποίο έχει την δυνατότητα ο νέος admin να το αλλάξει έπειτα από το πρώτο του login. 
+
+<img src="images/newpass.PNG"  /> </br>
+<img src="images/newpass2.PNG"  /> </br>
 ## Containerization
 
 ### MongoDB Container
