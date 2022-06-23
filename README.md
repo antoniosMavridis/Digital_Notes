@@ -177,7 +177,7 @@ curl -X POST localhost:5000/searchWord -d '{"words":"test"}'
 ``` 
  note= notes.find_one({'title':data["title"]})
 ```
-Η παρακάτω εντολή πραγματοποιεί αλλαγήτου τίτλου στην δεύτερη σημείωση:
+Η παρακάτω εντολή πραγματοποιεί αλλαγή του τίτλου στην δεύτερη σημείωση:
 ```
 curl -X POST localhost:5000/updateNote 
 -d '{"title":"A second TITLE","text":"this is another note","words":"test2"}' 
