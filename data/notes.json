@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "62b0ee0ff25bd1b466c891a0"
+  },
+  "title": "A TITLE",
+  "text": "thi",
+  "words": "test",
+  "date": "20/06/2022",
+  "username": "ant"
+},{
+  "_id": {
+    "$oid": "62b0ee83f25bd1b466c891a1"
+  },
+  "title": "A second TITLE",
+  "text": "this is another note",
+  "words": "test2",
+  "date": "20/06/2022",
+  "username": "ant"
+},{
+  "_id": {
+    "$oid": "62b0eed2f25bd1b466c891a2"
+  },
+  "title": "A third TITLE",
+  "text": "this is a nother  one  note",
+  "words": "test3",
+  "date": "20/06/2022",
+  "username": "ant"
+},{
+  "_id": {
+    "$oid": "62b0f87ef25bd1b466c891a5"
+  },
+  "title": "A TITLE",
+  "text": "thi",
+  "words": "test",
+  "date": "20/06/2022",
+  "username": "ant"
+}]

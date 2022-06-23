@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "62b0f5dcf25bd1b466c891a4"
+  },
+  "name": "admin",
+  "username": "adminUsername",
+  "password": "adminPass",
+  "e-mail": "admin@edu.gr",
+  "category": "admin"
+},{
+  "_id": {
+    "$oid": "62b4a80cdee6789a7c4bdea7"
+  },
+  "name": "antonis",
+  "username": "antonis",
+  "password": "changedPass\"",
+  "e-mail": "emal@edu.gr",
+  "category": "admin"
+},{
+  "_id": {
+    "$oid": "62b4b1e0dee6789a7c4bdea9"
+  },
+  "name": "antonis",
+  "username": "ant",
+  "password": "pass",
+  "e-mail": "emal@edu.gr",
+  "category": "simple user"
+}]
