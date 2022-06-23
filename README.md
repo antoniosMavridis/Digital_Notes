@@ -200,7 +200,7 @@ UPDATED A second TITLE
 ``` 
   note = notes.find_one({'title':data["title"],'username':users_sessions[uuid]})
 ```
-Η παρακάτω εντολή πραγματοποιεί αλλαγήτου τίτλου στην δεύτερη σημείωση:
+Η παρακάτω εντολή πραγματοποιεί φιαγραφή της πρώτης σημείωσης:
 ```
 curl -X POST localhost:5000/deleteNote -d '{"title":"A TITLE"}' 
 -H Content-Type:application/json -H "Authorization: 8d83c516-f0e3-11ec-9df7-0242ac130003"
