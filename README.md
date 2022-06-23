@@ -303,7 +303,7 @@ User with username antonis was assign admin.
 
 Τα αποτελέσματα της νέας τροποποίησης μπορούμε να τα διακρίνουμε και μέσω του βοηθητικού εργαλείο MongoDB Compass. 
 
-<img src="images/adminNew.PNG"  /> </br>
+<img src="images/adminOK.PNG"  /> </br>
 
 Παρατηρούμε ότι η κατηγορία του χρήστη από category: "simple user" έγινε category: "admin". Επίσης παρατηρούμε ότι το password του νέου admin έχει οριστεί αυτόματα ως password: "admnew". Το οποίο έχει την δυνατότητα ο νέος admin να το αλλάξει έπειτα από το πρώτο του login. 
 
