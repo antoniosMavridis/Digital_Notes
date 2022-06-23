@@ -283,10 +283,12 @@ User with usename ant was deleted
 ```
 @app.route('/assignUserAdm', methods=['POST'])
 ``` 
-Παρακάτω παρουσιάζεται τα credentials του διαχειρηστή του συστήματος μέσω του βοηθητικού εργαλείο MongoDB Compass 
+Παρακάτω παρουσιάζεται τα credentials του διαχειρηστή του συστήματος μέσω του βοηθητικού εργαλείο MongoDB Compass.
+
 <img src="images/adminCredentials.PNG"  /> </br>
 
 Έστω ότι υπάρχει ένα απλός χρήστης στο σύστημα με τα παρακάτω credentials. Το είδος του χρήστη υποδηλώνεται από το πεδίο Category. 
+
 <img src="images/simpleUserCredentials.PNG"  /> </br> 
 
 Έπειτα από την εκτελέση του συγκεκριμένου entrypoint με την παρακάτω εντολή,ο χρήστης Admin αλλάζει τον χρήστη με username: antonis σε admin user. 
