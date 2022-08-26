@@ -1,4 +1,4 @@
-# YpoxreotikiErgasia22_E18102_MAVRIDIS_ANTONIOS
+# Digital_Notes
 A Python application in Docker with Mongodb Database that simulates the GoogleKeep application.
 
 <img src="images/docker.png" width="1000" height="550" /> </br>
